@@ -1,0 +1,12 @@
+#!/bin/bash
+
+isRunning=$(ps aux|grep weeb_mode|head -n -1)
+sleep 1
+
+echo "$isRunning"
+
+if [[ $isRunning ]]; then
+	firefox -profile ~/.mozilla/firefox/bvgxmk10.standin
+else
+	firefox
+fi

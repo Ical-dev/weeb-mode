@@ -1,0 +1,26 @@
+#!/bin/bash
+
+UwU ()
+{
+	while true; do
+		sleep 10
+		continue
+	done
+}
+
+#we remove 3 lines from isRunning for 3 reasons:
+#1. Last line removes grep weeb_mode from ps x
+#2. Second last line is to remove the extra ps x line for weeb_mode that is created with the subshell pipe
+#3. The third line is to remove the current running version
+isRunning=$(ps aux|grep weeb_mode|head -n -3)
+
+if [[ $isRunning ]]; then
+	xwallpaper --stretch $XDG_CONFIG_HOME/wallpapers/denis_istomin__tender_memories.png
+	#xrdb ~/.Xresources
+	killall weeb_mode
+else
+	xwallpaper --stretch $XDG_CONFIG_HOME/weeb_mode/astolfo_net.jpg
+	#xrdb -override ~/.config/weeb_mode/Xresources
+	UwU &
+fi
+exit 0
